@@ -16,7 +16,13 @@ function createToken(user) {
     options.subject = user;
   }
 
-  return jwt.sign({}, functions.config().env.keys.private, options)
+  return jwt.sign({
+    scopes: [
+      "wirus.user.name", 
+      "wirus.user.email", 
+      "wirus.user.place"
+    ]
+  }, functions.config().env.keys.private, options)
 }
 
 async function requestAccessToken(user, token) {

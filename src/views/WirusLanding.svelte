@@ -1,7 +1,10 @@
 <script>
   import { testEmail } from "../lib/utils";
-  import {router} from "@spaceavocado/svelte-router";
-  import { connectExistingUser, connectNewUser } from "../lib/wirus-integration";
+  import { router } from "@spaceavocado/svelte-router";
+  import {
+    connectExistingUser,
+    connectNewUser
+  } from "../lib/wirus-integration";
   import firebase from "../lib/firebase";
 
   $: email = "";
@@ -37,7 +40,6 @@
 </script>
 
 <style>
-
   input {
     margin-bottom: 10px;
   }
@@ -49,7 +51,6 @@
   h2 {
     margin-bottom: 30px;
   }
-
 </style>
 
 <svelte:head>
@@ -58,36 +59,50 @@
 
 <div class="main">
   <div class="content-wrapper">
-    <h2>Verbinde deinen <br/> WIRus Account</h2>
+    <h2>
+      Verbinde deinen
+      <br />
+      WIRus Account
+    </h2>
 
-    <input
-      bind:value={email}
-      placeholder="Email"
-      class:error={!emailValid || !credValid} />
-    <input
-      bind:value={password}
-      placeholder="Passwort"
-      type="password"
-      class:error={!credValid} />
+    <form>
+      <input
+        bind:value={email}
+        placeholder="Email"
+        class:error={!emailValid || !credValid}
+        autocomplete="email" />
+      <input
+        bind:value={password}
+        placeholder="Passwort"
+        type="password"
+        class:error={!credValid}
+        autocomplete="current-password" />
+    </form>
     <button on:click={connectExisting} style="margin-top: 20px">
-      Mit bestehendem <br/> Account verknüpfen.
+      Mit bestehendem
+      <br />
+      Account verknüpfen.
     </button>
-
 
     <div class="divider">
       <span>ODER</span>
     </div>
 
     <button on:click={connectNew} class="secondary">
-      Ich habe keinen <br/> Demo-Platform Account
+      Ich habe keinen
+      <br />
+      Demo-Platform Account
     </button>
 
   </div>
 
   <div class="info">
-    Wenn du aus der WIRus App eine Platform hinzufügen möchtest hast du die Wahl. Ein bestehendes Konto auf
-    der Platform mit deinem WIRus Account verknüpfen, oder automatisch ein neues Konto anlegen lassen. <br/>
-    Wenn du ein bestehendes Konto verbindest werden alle deine bereits erledigten Aktionen mit der WIRus App
-    synchronisiert und keine Punkte gehen verloren.
+    Wenn du aus der WIRus App eine Platform hinzufügen möchtest hast du die
+    Wahl. Ein bestehendes Konto auf der Platform mit deinem WIRus Account
+    verknüpfen, oder automatisch ein neues Konto anlegen lassen.
+    <br />
+    Wenn du ein bestehendes Konto verbindest werden alle deine bereits
+    erledigten Aktionen mit der WIRus App synchronisiert und keine Punkte gehen
+    verloren.
   </div>
 </div>

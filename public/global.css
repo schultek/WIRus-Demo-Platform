@@ -92,3 +92,9 @@ button.secondary:hover {
   box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.2);
   padding: 20px 40px 40px 40px;
 }
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
